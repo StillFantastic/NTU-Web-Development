@@ -39,6 +39,19 @@
       element.style.display = isVisible ? "block" : "none";
     }
 
+    let spaceCount = 0;
+
+    window.addEventListener('keydown', (event) => {
+      if (event.code === 'Space') {
+        spaceCount++;
+        if (spaceCount === 5) {
+          document.body.style.backgroundImage = "url(./img/rick-roll.jpeg)";
+          document.body.style.backgroundSize = 'cover'; // add this line
+          spaceCount = 0; // reset the count
+        }
+      }
+    });
+
     setInterval(displayTime, 1000);
   </script>
 </head>

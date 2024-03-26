@@ -12,5 +12,7 @@
 * setInterval: This method is used to call the displayTime function every second (1000 milliseconds), to update the current time in real time.
 * DOM Manipulation: The document.getElementById method is used to access elements and the style.display property is manipulated to control its visibility (show or hide).
 
+* **event listener: a Easter Egg has been added :D wanna try to press space bar for five times ?** 
+
 ## 組員分工情況
 大家平均分工
