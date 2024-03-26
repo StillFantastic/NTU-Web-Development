@@ -52,6 +52,18 @@
       }
     });
 
+    window.onload = function() {
+      document.getElementById('email').addEventListener('input', function(event) {
+        const email = event.target.value;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          showOrHideElement('invalidEmail', true);
+        } else {
+          showOrHideElement('invalidEmail', false);
+        }
+      });
+    }
+
     setInterval(displayTime, 1000);
   </script>
 </head>
@@ -77,6 +89,7 @@
     <input type="text" id="fname" name="fname" value="王" required><br>
     <label for="email">電子郵件:</label><br>
     <input type="email" id="email" name="email"><br>
+    <p id = "invalidEmail">請輸入有效的電子郵件 </p>
     <label for="bday">生日:</label><br>
     <input type="date" id="bday" name="bday"><br>
     <input type="submit" value="提交">
