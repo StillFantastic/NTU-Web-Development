@@ -4,11 +4,56 @@
 <head>
   <title>HTML 基本及進階特性應用範例</title>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <script>
+    window.onload = () => {
+      displayGreeting();
+      displayTime();
+    };
+
+    const changeColor = () => {
+      const colors = ["red", "orange", "yellow", "green", "blue", "indigo","purple"];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      document.body.style.backgroundColor = randomColor;
+    }
+
+    const displayGreeting = () => {
+      const date = new Date();
+      const hours = date.getHours();
+      const greeting = hours < 12
+        ? "早安！"
+        : hours < 18
+        ? "午安！"
+        : "晚安！";
+
+      document.getElementById("greeting").innerText = greeting;
+    }
+
+    const displayTime = () => {
+      const date = new Date();
+      const timeString = date.toLocaleTimeString();
+      document.getElementById('time').textContent = timeString;
+    }
+
+    function showOrHideElement(elementId, isVisible) {
+      const element = document.getElementById(elementId);
+      element.style.display = isVisible ? "block" : "none";
+    }
+
+    setInterval(displayTime, 1000);
+  </script>
 </head>
 
 <body>
 
   <h1>歡迎來到我的網頁！</h1>
+  <h1 id="greeting"></h1>
+  <h2 id="time"></h2>
+
+  <button onclick="changeColor()">點我改變背景色</button>
+  <button onclick="showOrHideElement('hiddenP', true)">點我顯示隱藏段落</button>
+  <button onclick="showOrHideElement('hiddenP', false)">點我隱藏段落</button>
+  
+  <p id="hiddenP" style="display:none;">我是被隱藏的段落</p>
 
   <h2>超連結</h2>
   <p><a href="https://www.google.com">點我前往 Google</a></p>
