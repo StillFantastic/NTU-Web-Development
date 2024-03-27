@@ -2,113 +2,40 @@
 <html>
 
 <head>
-  <title>HTML 基本及進階特性應用範例</title>
+  <title>Registration Page</title>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <script>
-    window.onload = () => {
-      displayGreeting();
-      displayTime();
-    };
-
-    const changeColor = () => {
-      const colors = ["red", "orange", "yellow", "green", "blue", "indigo","purple"];
-      const randomColor = colors[Math.floor(Math.random() * colors.length)];
-      document.body.style.backgroundColor = randomColor;
-    }
-
-    const displayGreeting = () => {
-      const date = new Date();
-      const hours = date.getHours();
-      const greeting = hours < 12
-        ? "早安！"
-        : hours < 18
-        ? "午安！"
-        : "晚安！";
-
-      document.getElementById("greeting").innerText = greeting;
-    }
-
-    const displayTime = () => {
-      const date = new Date();
-      const timeString = date.toLocaleTimeString();
-      document.getElementById('time').textContent = timeString;
-    }
-
-    function showOrHideElement(elementId, isVisible) {
-      const element = document.getElementById(elementId);
-      element.style.display = isVisible ? "block" : "none";
-    }
-
-    let spaceCount = 0;
-
-    window.addEventListener('keydown', (event) => {
-      if (event.code === 'Space') {
-        spaceCount++;
-        if (spaceCount === 5) {
-          document.body.style.backgroundImage = "url(./img/rick-roll.jpeg)";
-          document.body.style.backgroundSize = 'cover'; // add this line
-          spaceCount = 0; // reset the count
-        }
-      }
-    });
-
-    window.onload = function() {
-      document.getElementById('email').addEventListener('input', function(event) {
-        const email = event.target.value;
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-          showOrHideElement('invalidEmail', true);
-        } else {
-          showOrHideElement('invalidEmail', false);
-        }
-      });
-    }
-
-    setInterval(displayTime, 1000);
-  </script>
 </head>
 
 <body>
 
-  <h1>歡迎來到我的網頁！</h1>
-  <h1 id="greeting"></h1>
-  <h2 id="time"></h2>
+  <div class="container">
+    <h1>Welcome to Our Website!</h1>
+    <h1 id="greeting"></h1>
+    <h2 id="time"></h2>
 
-  <button onclick="changeColor()">點我改變背景色</button>
-  <button onclick="showOrHideElement('hiddenP', true)">點我顯示隱藏段落</button>
-  <button onclick="showOrHideElement('hiddenP', false)">點我隱藏段落</button>
-  
-  <p id="hiddenP" style="display:none;">我是被隱藏的段落</p>
+    <button id="changeColorButton">Change Background Color</button>
+    <button id="showButton">Show Hidden Text</button>
+    <button id="hideButton">Hide Text</button>
+    
+    <p id="hiddenP" class="hidden">This is a hidden paragraph</p>
 
-  <h2>超連結</h2>
-  <p><a href="https://www.google.com">點我前往 Google</a></p>
+    <h2>Links</h2>
+    <p><a href="https://www.google.com">Go to Google</a></p>
 
-  <h2>進階表單</h2>
-  <form action="">
-    <label for="fname">姓氏:</label><br>
-    <input type="text" id="fname" name="fname" value="王" required><br>
-    <label for="email">電子郵件:</label><br>
-    <input type="email" id="email" name="email"><br>
-    <p id = "invalidEmail">請輸入有效的電子郵件 </p>
-    <label for="bday">生日:</label><br>
-    <input type="date" id="bday" name="bday"><br>
-    <input type="submit" value="提交">
-    <input type="submit" value="提交">
-  </form>
+    <h2>Registration Form</h2>
+    <form id="registrationForm">
+      <label for="fname">Last Name:</label><br>
+      <input type="text" id="fname" name="fname" required><br>
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email"><br>
+      <p id="invalidEmail" class="hidden">Please enter a valid email</p>
+      <label for="bday">Birthday:</label><br>
+      <input type="date" id="bday" name="bday"><br>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
 
-  <h2>文字/背景色彩 與 Display</h2>
-
-  <div class="rainbow" style="color: red; background-color: rgba(0, 0, 0, 0.3); " >R</div>
-  <div class="rainbow" style="color: orange; background-color: rgba(0, 0, 0, 0.3); ">A</div>
-  <div class="rainbow" style="color: yellow; background-color: rgba(0, 0, 0, 0.3); ">I</div>
-  <div class="rainbow" style="color: green; background-color: rgba(0, 0, 0, 0.3); ">N</div>
-  <div class="rainbow" style="color: blue; background-color: rgba(0, 0, 0, 0.3); ">B</div>
-  <div class="rainbow" style="color: indigo; background-color: rgba(0, 0, 0, 0.3); ">O</div>
-  <div class="rainbow" style="color: purple; background-color: rgba(0, 0, 0, 0.3); ">W</div>
-  <h2>選擇器 與 Box and css </h2> <!-- 引入外部CSS -->
-  天上的太陽<span class="sun">日</span>紅呀紅彤彤耶
-
-  
+  <script src="script.js"></script>
 </body>
 
 </html>

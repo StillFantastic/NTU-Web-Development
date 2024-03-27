@@ -1,4 +1,4 @@
-.sun {
+/* .sun {
     display: inline-block;
     border: 15px solid yellow;
     background: orange;
@@ -10,16 +10,7 @@
     text-align: center;
   }
   
-  @keyframes rainbow {
-    0% {color: red;}
-    14% {color: orange;}
-    28% {color: yellow;}
-    42% {color: green;}
-    57% {color: blue;}
-    71% {color: indigo;}
-    85% {color: purple;}
-    100% {color: red;}
-  }
+
   
   .sun {
     animation-name: rainbow;
@@ -42,3 +33,105 @@
     font-size: 16px;
     margin-top: 10px;
   }
+
+
+   */
+
+   body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  @keyframes rainbow {
+    0% {background-color: red;}
+    14% {background-color: orange;}
+    28% {background-color: yellow;}
+    42% {background-color: lime;}
+    57% {background-color: blue;}
+    71% {background-color: indigo;}
+    85% {background-color: violet;}
+    100% {background-color: red;}
+  }
+
+  button {
+  
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: medium;
+
+    animation-name: rainbow;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  input[type=text], input[type=email], input[type=date], input[type=submit] {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit] {
+    width: auto;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+  }
+
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  #invalidEmail {
+    color: red;
+    margin-top: 5px;
+  }
+  
+  h1, h2 {
+    color: #333;
+  }
+  
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  #hiddenP {
+    background-color: #f9f9f9;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
