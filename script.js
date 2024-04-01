@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('hideButton').addEventListener('click', () => showOrHideElement('hiddenP', false));
     document.getElementById('email').addEventListener('input', validateEmail);
     window.addEventListener('keydown', checkEasterEgg);
+    document.querySelector('form').addEventListener('submit', handleFormSubmit);
   }
   
   const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "purple"];
@@ -44,10 +45,24 @@ document.addEventListener('DOMContentLoaded', () => {
     if (event.code === 'Space') {
       spaceCount++;
       if (spaceCount === 5) {
-        document.body.style.backgroundImage = "url(./img/rick-roll.jpeg)";
+        // document.body.style.backgroundImage = "url(./img/rick-roll.jpeg)";
+        document.getElementsByClassName('container')[0].style.backgroundImage = "url(./img/rick-roll.jpeg)";
         document.body.style.backgroundSize = 'cover';
         spaceCount = 0;
       }
     }
   }
-  
+
+function handleFormSubmit(event) {
+  event.preventDefault();
+  // get form data
+  const fname = document.getElementById('fname').value;
+  const email = document.getElementById('email').value;
+  const bday = document.getElementById('bday').value;
+
+  Swal.fire({
+    icon: 'success',
+    title: 'Your form has been submitted',
+    text: `Name: ${fname}, Email: ${email}, Birthday: ${bday}`,
+  });
+}
