@@ -5,7 +5,6 @@
 * JavaScript Objects: Utilized in structuring the code via App and UIComponent objects, illustrating complex behavior modeling and prototype-based inheritance for functionality sharing.
 
 * DOM Manipulation: Employed for dynamic webpage interaction, utilizing methods like document.getElementById and document.querySelector for element selection and modification, showcasing dynamic styling and visibility adjustments.
-JavaScript Objects: The script extensively uses objects, such as App and UIComponent, to organize code into logical sections. These objects encapsulate data and functions related to specific parts of the application, demonstrating the use of objects to model complex behaviors and structures in JavaScript.
 
 
 ## 額外找了與當週上課的主題相關的程式技術
