@@ -19,7 +19,7 @@
     Utilized local storage to save the last selected background color, which introduces the concept of web storage, allowing the application to store data locally within the user's browser and retrieve it after the browser is reloaded or restarted.
 
 * **Asynchronous JavaScript**: 
-    Introduced asynchronous programming by incorporating a feature that fetches a random quote from a public API using the `fetch` API and displaying it on the page. This demonstrates the use of Promises and asynchronous web requests, showcasing how JavaScript handles asynchronous operations and updates the UI upon receiving the response.
+    Introduced asynchronous programming by incorporating a feature that fetches a random joke from a public API using the `fetch` API and displaying it on the page.
 
 * **Dynamic Content Update**: 
     Through the real-time display of a fetched quote and user details post-form submission.
