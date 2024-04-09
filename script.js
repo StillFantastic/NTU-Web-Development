@@ -30,7 +30,7 @@ UIComponent.prototype.setEasterEggBackground = function() {
 // App object encapsulates the entire application logic
 const App = (function() {
   const privateMembers = {
-    [_colors]: ["red", "orange", "yellow", "green", "blue", "indigo", "purple"],
+    [_colors]: ["red", "orange", "yellow", "green", "blue", "indigo", "purple", "white"],
     [_spaceCount]: 0
   };
 
@@ -38,8 +38,10 @@ const App = (function() {
 
   function changeColor() {
     const randomIndex = Math.floor(Math.random() * privateMembers[_colors].length);
-    document.body.style.backgroundColor = privateMembers[_colors][randomIndex];
-  }
+    const randomColor = privateMembers[_colors][randomIndex];
+    document.body.style.backgroundColor = randomColor ;
+    localStorage.setItem('backgroundColor', randomColor);
+}
 
   function displayGreeting() {
     const hours = new Date().getHours();
@@ -80,6 +82,42 @@ const App = (function() {
     });
   }
 
+  function applyStoredBackgroundColor() {
+    const storedColor = localStorage.getItem('backgroundColor');
+    if (storedColor) {
+        document.body.style.backgroundColor = storedColor;
+    }
+  }
+
+  function fetchAndDisplayJoke() {
+    // Using a public API to fetch a random quote
+    fetch('https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw&type=single')
+        .then(response => response.json())
+        .then(data => {
+            displayQuote(data.joke);
+        })
+        .catch(error => {
+            console.error('Error fetching the quote: ', error);
+        });
+  }
+
+  function displayQuote(joke) {
+    // Create a new div element to display the quote
+    const quoteDiv = document.createElement('div');
+    quoteDiv.classList.add('joke');
+
+    // Add content to the div
+    quoteDiv.innerHTML = `
+        <p><strong>- Random Joke - :P</strong></p>
+        <p>"${joke}"</p>
+    `;
+
+    const container = document.querySelector('.container');
+    const timeElement = document.getElementById('time');  
+    container.insertBefore(quoteDiv, timeElement.nextSibling);
+    // document.body.appendChild(quoteDiv);
+}
+
   function bindEvents() {
     document.getElementById('changeColorButton').addEventListener('click', changeColor);
     document.getElementById('showButton').addEventListener('click', () => uiComponent.showOrHideElement('hiddenP', true));
@@ -91,9 +129,11 @@ const App = (function() {
 
   return {
     init: function() {
+      applyStoredBackgroundColor();
       displayGreeting();
       displayTime();
       bindEvents();
+      fetchAndDisplayJoke();
     }
   };
 })();
