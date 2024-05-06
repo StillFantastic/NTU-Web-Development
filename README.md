@@ -1,7 +1,7 @@
 # Django Backend 
 
 ### Usage 
-1. the use of venv is recommend 
+1. the use of venv is recommended
     ```
     pip install requirements.txt 
     # or pip3 install requirements.txt 
