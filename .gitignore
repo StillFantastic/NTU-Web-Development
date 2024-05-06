@@ -1,0 +1,6 @@
+
+.DS_Store
+# venv name 
+web-dev 
+.env
+__pycache__
