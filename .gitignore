@@ -1,6 +1,17 @@
-
 .DS_Store
-# venv name 
-web-dev 
+
+# Environments
 .env
-__pycache__
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+web-dev 
+
+# Ignore Python bytecode files
+*.pyc
+
+# Ignore __pycache__ directories
+**/__pycache__/

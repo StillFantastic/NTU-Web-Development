@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Registration Page</title>
+  <!-- Load css in Django-->
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+  <body data-img-url="{% static 'img/rick-roll.jpeg' %}">
+
+  <div class="container">
+    <h1>Welcome to Our Website!</h1>
+    <h1 id="greeting"></h1>
+    <h2 id="time"></h2>
+
+    <button id="changeColorButton">Change Background Color</button>
+    <button id="showButton">Show Hidden Text</button>
+    <button id="hideButton">Hide Text</button>
+    
+    <p id="hiddenP" class="hidden">This is a hidden paragraph</p>
+
+    <h2>Links</h2>
+    <p><a href="https://www.google.com">Go to Google</a></p>
+
+    <h2>Registration Form</h2>
+    <form id="registrationForm">
+      <label for="fname">Last Name:</label><br>
+      <input type="text" id="fname" name="fname" required><br>
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email"><br>
+      <p id="invalidEmail" class="hidden">Please enter a valid email</p>
+      <label for="bday">Birthday:</label><br>
+      <input type="date" id="bday" name="bday"><br>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+  <!-- Load JavaScript in Django-->
+  <script src="{% static 'js/script.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
