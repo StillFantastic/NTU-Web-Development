@@ -4,17 +4,20 @@
 1. the use of venv is recommended
     ```
     pip install requirements.txt 
-    # or pip3 install requirements.txt 
     ```
-
-2. start server 
+2. migrate 
+    ```
+    python manage.py makemigrations
+    python manage.py migrate  
+    ```
+3. start server 
     ```
     cd backend 
     python manage.py runserver
-    # or python3 manage.py runserver
     ```
 ### Remark 
-~none~
+**backend/db.sqlite3 is not up to date  and will not update**
+**Please migrate before runserver**
 ### Project structure 
 ```
 backend/
