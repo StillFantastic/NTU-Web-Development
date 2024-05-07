@@ -77,10 +77,32 @@ const App = (function() {
     const email = document.getElementById('email').value;
     const bday = document.getElementById('bday').value;
 
+    // Retrieve CSRF token from the form
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
     Swal.fire({
       icon: 'success',
       title: 'Your form has been submitted',
       text: `Name: ${fname}, Email: ${email}, Birthday: ${bday}`,
+    }).then(() => {
+      // send the POST request http://127.0.0.1:8000/mainSite/register/
+      fetch('http://127.0.0.1:8000/mainSite/register/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrfToken,  // Include the CSRF token here
+        },
+        body: JSON.stringify({
+          fname: fname,
+          email: email,
+          bday: bday,
+        }),
+      })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch((error) => {
+        console.error('Error:', error);
+      });
     });
   }
 
@@ -118,7 +140,33 @@ const App = (function() {
     const timeElement = document.getElementById('time');  
     container.insertBefore(quoteDiv, timeElement.nextSibling);
     // document.body.appendChild(quoteDiv);
-}
+  }
+
+  function displayRegistrations(registrations) {
+    const container = document.getElementById('registrationData');
+    container.innerHTML = '';  // Clear previous content
+
+    registrations.forEach(reg => {
+        const regDiv = document.createElement('div');
+        regDiv.className = 'registration';
+        regDiv.innerHTML = `
+            <p>Last Name: ${reg.fname}</p>
+            <p>Email: ${reg.email}</p>
+            <p>Birthday: ${reg.bday}</p>
+        `;
+        container.appendChild(regDiv);
+    });
+  }
+
+  function fetchRegistrations() {
+    fetch('http://127.0.0.1:8000/mainSite/api/registration_list/')
+    .then(response => response.json())
+    .then(data => {
+        displayRegistrations(data.registration);
+    })
+    .catch(error => console.error('Error fetching registration data:', error));
+  }
+
 
   function bindEvents() {
     document.getElementById('changeColorButton').addEventListener('click', changeColor);
@@ -127,6 +175,8 @@ const App = (function() {
     document.getElementById('email').addEventListener('input', validateEmail);
     window.addEventListener('keydown', checkEasterEgg);
     document.querySelector('form').addEventListener('submit', handleFormSubmit);
+
+    document.addEventListener('DOMContentLoaded', fetchRegistrations());
   }
 
   return {

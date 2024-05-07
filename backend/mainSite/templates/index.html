@@ -1,11 +1,13 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
-
-<head>
-  <title>Registration Page</title>
-  <!-- Load css in Django-->
-  {% load static %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  
+  <head>
+    <title>Registration Page</title>
+    <!-- Load css in Django-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <script src="{% static 'js/script.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -26,7 +28,8 @@
     <p><a href="https://www.google.com">Go to Google</a></p>
 
     <h2>Registration Form</h2>
-    <form id="registrationForm">
+    <form id="registrationForm" action="/mainSite/register/" method="post">
+      {% csrf_token %}
       <label for="fname">Last Name:</label><br>
       <input type="text" id="fname" name="fname" required><br>
       <label for="email">Email:</label><br>
@@ -38,9 +41,12 @@
     </form>
   </div>
 
-  <!-- Load JavaScript in Django-->
-  <script src="{% static 'js/script.js' %}"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <div class="container">
+    <h1>Registration Data</h1>
+      <div id="registrationData">
+          <!-- Registration data will be appended here -->
+      </div>
+  </div>
 </body>
 
 </html>
