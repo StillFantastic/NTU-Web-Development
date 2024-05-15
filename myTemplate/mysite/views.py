@@ -58,3 +58,10 @@ def carlist(request, maker=0):
     maker_name=  car_maker[maker]
     cars = car_list[maker]
     return render(request, 'carlist.html', locals())
+
+
+def my_view(request):
+    context = {
+        "author": "gaurav singhal",
+    }
+    return render(request, "index.html", context)

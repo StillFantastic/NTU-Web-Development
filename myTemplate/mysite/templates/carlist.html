@@ -32,13 +32,18 @@
             <td>{{maker_name}}</td>
             <td>{{ c }}</td>
         </tr>
-        
+
         {% empty %}
         <h3>車廠<em>{{maker_name}}</em>目前無庫存車</h3>
         {% endfor%}
         {% if cars %}
     </table>
     {% endif%}
+    {% comment %} index.html {% endcomment %}
+
+    {% load custom_tags %}
+
+    {% current_time "%d/%m/%Y %H:%M:%S %p" %}
 </body>
 
 </html>
