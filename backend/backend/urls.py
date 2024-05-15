@@ -17,10 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import RedirectView
-
+from mainSite.views import homepage, showpost
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('mainSite/', include('mainSite.urls')),
-    path('', RedirectView.as_view(url='/mainSite/register', permanent=True)),
+    path('', RedirectView.as_view(url='/mainSite/register', permanent=False)),
+    path('home/', homepage),
+    path('post/<slug:slug>/', showpost),
 ]
