@@ -1,4 +1,4 @@
-# Week 07 Report
+# Week 10 Report
 
 ## 練習了哪些當週上課的主題
 * ***Django project init***
