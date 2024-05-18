@@ -23,4 +23,6 @@ urlpatterns = [
     path('', views.index),
     path('get_example/', views.get_example),
     path('<int:pid>/<str:del_pass>', views.index),
+    path('list/', views.listing),
+    path('post/', views.posting),
 ]
