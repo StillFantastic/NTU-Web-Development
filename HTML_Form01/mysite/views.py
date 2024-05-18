@@ -7,6 +7,7 @@ def get_example(request):
         urpass= request.GET['user_pass']
         se_byear = request.GET['byear']
         urfcolor = request.GET.getlist('fcolor')
+        favorite_movie = request.GET.get('fmovie')
     except:
         urid= None
     

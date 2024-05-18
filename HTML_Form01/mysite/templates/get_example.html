@@ -17,12 +17,20 @@
             {% endfor%}
         </select><br>
 
-        喜歡的顏色（可複選）：
+        喜歡的顏色(可複選):
         <input type='checkbox' name='fcolor' value='Green'>Green
         <input type='checkbox' name='fcolor' value='Red'>Red
         <input type='checkbox' name='fcolor' value='Blue'>Blue
         <input type='checkbox' name='fcolor' value='Yellow'>Yellow
         <input type='checkbox' name='fcolor' value='Orange'>Orange
+        <br />
+
+        喜好的電影(單選):
+        <input type='radio' name='fmovie' value='沙丘'>沙丘
+        <input type='radio' name='fmovie' value='排球少年 劇場版'>排球少年 劇場版
+        <input type='radio' name='fmovie' value='哥吉拉'>哥吉拉
+        <input type='radio' name='fmovie' value='你的名字'>你的名字
+        <input type='radio' name='fmovie' value='貓的報恩'>貓的報恩
         <br />
 
         <input type='submit' value='登入'>
@@ -38,12 +46,15 @@
 
 出生年：{{se_byear}} <br>
 
-顏色喜好:
+顏色喜好：
 {% for c in urfcolor %}
 {{ c }}
 {% empty %}
 沒有選擇任何顏色
 {% endfor%}
 <br />
+
+喜歡的電影：
+{{ favorite_movie | default:"未選擇電影" }}
 
 {% endblock%}
