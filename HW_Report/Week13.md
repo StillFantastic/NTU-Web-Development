@@ -7,8 +7,8 @@
   * 顯示/刪除貼文
 * 3種Post方法
   * postint and listing
-    * posting.html用method='POST'傳入views.posting
-    * views.listing把資料撈出來給listing.html
+    * `posting.html`用`method='POST'`傳入`views.posting`
+    * `views.listing`把資料撈出來給`listing.html`
   * 表單類別Form
   * ModelForm
 
