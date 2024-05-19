@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
 from mysite import models, forms
 
 # Create your views here.
@@ -93,3 +94,17 @@ def contact(request):
     else:
         form = forms.ContactForm()
     return render(request, 'contact.html', locals())
+
+def post2db(request):
+    if request.method == 'POST':
+        post_form= forms.PostForm(request.POST)
+        if post_form.is_valid():
+            message = "您的訊息已儲存，要等管理者啟用後才看得到喔。"
+            post_form.save()
+            return HttpResponseRedirect('/list/')
+        else:
+            message = '如要張貼訊息，則每一個欄位都要填...'
+    else:
+        post_form= forms.PostForm()
+        message = '如要張貼訊息，則每一個欄位都要填... ' 
+    return render(request, 'post2db.html', locals())
